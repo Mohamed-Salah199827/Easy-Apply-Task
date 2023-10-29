@@ -27,3 +27,28 @@ npm run dev
 ```sh
 npm run build
 ```
+### Features
+
+- TypeScript Included.
+- Vue Router Included.
+- Vuex.
+- Bootstrap 5.
+- SCSS
+- Axios
+
+
+### Directory Structure
+
+| Name                              | Description |
+| --------------------------------- | ----------- |
+| **build/**                        | Compiled source files will be placed here. |
+| **public/**                       | Static assets (fonts, css, js, img). |
+| **src/**                          | Source files. |
+| **src/components**                | Vue components including shared (common) components. |
+| **src/routes**                    | Application routes. |
+| **src/store**                     | Vuex state management. |
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) v14 or newer.
+
