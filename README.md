@@ -6,7 +6,6 @@ The project is helpful to start your next project, as it provides a lot of the c
 
 ### Features
 
-- TypeScript Included.
 - Vue Router Included.
 - Vuex.
 - Bootstrap 5.
