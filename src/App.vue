@@ -1,13 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-import { usePostsStore } from "./stores/Posts";
-const Posts=usePostsStore()
-Posts.GetAllPosts()
+import Posts from "./views/Posts.vue";
+
 
 </script>
 
 <template>
+  
+<Posts/>
 
 </template>
 <style></style>
