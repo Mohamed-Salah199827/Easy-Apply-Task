@@ -29,9 +29,8 @@ npm run build
 ```
 ### Features
 
-- TypeScript Included.
 - Vue Router Included.
-- Vuex.
+- Vuex (pinia).
 - Bootstrap 5.
 - SCSS
 - Axios
