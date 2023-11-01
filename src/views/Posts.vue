@@ -1,13 +1,14 @@
 <script setup>
 import { onBeforeMount, ref } from "vue";
+import { RouterLink, RouterView } from "vue-router";
+
 import { usePostsStore } from "../stores/Posts";
 import { useUsersStore } from "../stores/Users";
-import Card from '../components/Card.vue';
 
 const PostsStore = usePostsStore();
-const UsersStore =useUsersStore()
+const UsersStore = useUsersStore();
+const showPost=ref(false);
 const currentPage = ref(0);
-
 
 function handlePagination(page) {
   let items = document.querySelectorAll(".page-item");
@@ -22,52 +23,48 @@ function handlePagination(page) {
   currentPage.value = page;
 }
 
-function getUserName(user_id){
-   let users= UsersStore.Users
-   console.log(users);
-   users.forEach(user => {
-    if (user.id==user_id) {
-        return username
-    }
-    
-   });
-}
 
 onBeforeMount(() => {
   PostsStore.GetAllPosts();
   UsersStore.GetAllUsers();
-  getUserName()
 });
 </script>
 
 <template>
-    <Card/>
+  <Card  :post="Post" />
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <template v-for="post in PostsStore.Posts[currentPage]" :key="post.id">
-    <div v-if="'https://picsum.photos/600/300/?image='+ post.id!=null"  class="col mb-3">
-      <div class="card">
-        <img
-          :src="'https://picsum.photos/600/300/?image=' + post.id"
-          class="card-img-top"
-          :alt="post.title"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ post.title.substring(0,20) }}</h5>
-          <p class="card-text">{{ post.body.substring(0,80) }}</p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>          <div class="d-flex mt-4 justify-content-between">
-            <template v-for="user in UsersStore.Users" :key="user.id">
-                <template v-if="user.id==post.userId">
-            <h6><span>username:</span> {{ user.username }}</h6>
-            <h6><span>phone:</span> {{ user.phone }}</h6>
+      <div
+        class="col mb-3"
+      >
+        <div class="card">
+          <img
+            :src="'https://picsum.photos/600/300/?image=' + post.id"
+            class="card-img-top"
+            :alt="post.title"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title.substring(0, 20) }}</h5>
+            <p class="card-text">{{ post.body.substring(0, 80) }}</p>
+            <RouterLink
+              class="btn btn-primary"
+              :to="'/post/'+post.id"
+
+            >
+              show post
+            </RouterLink>
+            <div class="d-flex mt-4 justify-content-between p-2">
+              <template v-for="user in UsersStore.Users" :key="user.id">
+                <template v-if="user.id == post.userId">
+                  <h6><span>username:</span> {{ user.username }}</h6>
+                  <h6><span>phone:</span> {{ user.phone }}</h6>
                 </template>
-            </template>
+              </template>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</template>
+    </template>
   </div>
   <nav class="d-flex justify-content-center" aria-label="...">
     <ul class="pagination pagination-lg">
@@ -85,7 +82,6 @@ onBeforeMount(() => {
 
 <style>
 h6 span {
-    color: rgba(99, 98, 98, 0.555);
+  color: rgba(99, 98, 98, 0.555);
 }
-
 </style>

@@ -6,7 +6,7 @@ export const usePostsStore = defineStore('Posts', () => {
 
   
   const Posts=ref([])
-
+const Post = ref(null) 
   function GetAllPosts() { 
 
 axios.get('/posts').then((response) => {
@@ -26,10 +26,20 @@ axios.get('/posts').then((response) => {
 });
 
    }
- 
+   async function GetPost(id) { 
+
+    await axios.get(`/posts/${id}`).then((response) => {
+      Post.value=response.data
+    }).catch((err) => {
+      console.log(err);
+    });
+    
+       }
   return { 
     Posts,
-    GetAllPosts
+    GetAllPosts,
+    GetPost,
+    Post
 
    }
 })
