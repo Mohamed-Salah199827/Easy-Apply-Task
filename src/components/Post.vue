@@ -8,16 +8,6 @@ import { useUsersStore } from "../stores/Users";
 const route =useRoute()
 const PostStore = usePostsStore();
 const UsersStore = useUsersStore();
-
-
-function getUserName(user_id) {
-  let users = UsersStore.Users;
-  users.forEach((user) => {
-    if (user.id == user_id) {
-      return username;
-    }
-  });
-}
 onBeforeMount(() => {
   
   PostStore.GetPost(route.params.id);
