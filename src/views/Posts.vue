@@ -33,8 +33,7 @@ onBeforeMount(() => {
 <template>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <template v-for="post in PostsStore.Posts[currentPage]" :key="post.id">
-      <div
-        class="col mb-3"
+      <div class="col mb-3 card_padding"  
       >
         <div class="card">
           <img
@@ -86,4 +85,5 @@ h6 span {
 .page-item:hover{
   cursor: pointer;
 }
+
 </style>

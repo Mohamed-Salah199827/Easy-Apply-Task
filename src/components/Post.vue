@@ -10,7 +10,7 @@ const PostStore = usePostsStore();
 const UsersStore = useUsersStore();
 onBeforeMount(() => {
   PostStore.GetPost(route.params.id);
-  if(UsersStore.Users==null) UsersStore.GetAllUsers();
+  if(UsersStore.Users==null)UsersStore.GetAllUsers();
   
 });
 </script>
