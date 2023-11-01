@@ -9,11 +9,9 @@ const route =useRoute()
 const PostStore = usePostsStore();
 const UsersStore = useUsersStore();
 onBeforeMount(() => {
-  
-  PostStore.GetPost(route.params.id);
-  if(UsersStore.Users==null){
+    PostStore.GetPost(route.params.id);
     UsersStore.GetAllUsers();
-  }
+  
 });
 </script>
 
