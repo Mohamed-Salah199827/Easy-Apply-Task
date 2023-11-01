@@ -84,4 +84,7 @@ onBeforeMount(() => {
 h6 span {
   color: rgba(99, 98, 98, 0.555);
 }
+.page-item:hover{
+  cursor: pointer;
+}
 </style>
