@@ -5,7 +5,7 @@ import axios from 'axios'
 export const useUsersStore = defineStore('Users', () => {
 
   
-  const Users=ref([])
+  const Users=ref(null)
 
   function GetAllUsers() { 
 
